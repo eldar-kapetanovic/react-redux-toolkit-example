@@ -71,17 +71,17 @@ const EditPost = ({ match: { params: { postId } } }) => {
 
     useEffect(() => {
         if (postId) {
-            setApplicationTitle(dispatch, "Edit Post");
-            getPost(dispatch, postId);
+            dispatch(setApplicationTitle("Edit Post"));
+            dispatch(getPost(postId));
         } else {
-            setApplicationTitle(dispatch, "Add Post");
-            clearPost(dispatch);
-            clearComment(dispatch);
+            dispatch(setApplicationTitle("Add Post"));
+            dispatch(clearPost());
+            dispatch(clearComment());
         }
 
         return () => {
-            clearPost(dispatch);
-            clearComment(dispatch);
+            dispatch(clearPost());
+            dispatch(clearComment());
         };
     }, [postId, dispatch]);
 
@@ -126,15 +126,14 @@ const EditPost = ({ match: { params: { postId } } }) => {
     };
 
     const handleDeletePost = () => {
-        setModalData(
-            dispatch,
+        dispatch(setModalData(
             {
                 type: MODAL_TYPES.DELETE_POST,
                 visible: true,
                 postTitle: post.title,
                 postId,
             }
-        );
+        ));
     };
 
     const handleSavePost = () => {
@@ -159,12 +158,12 @@ const EditPost = ({ match: { params: { postId } } }) => {
             newPostData.timestamp = {
                 ".sv":"timestamp",
             };
-            addPost(dispatch, newPostData);
+            dispatch(addPost(newPostData));
         } else {
             commentsRef.current.forEach((commentReference) => {
                 commentReference.saveComment();
             });
-            patchPost(dispatch, postId, newPostData);
+            dispatch(patchPost(postId, newPostData));
         }
     };
 

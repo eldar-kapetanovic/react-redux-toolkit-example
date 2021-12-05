@@ -31,11 +31,11 @@ const PostDetails = ({ match: { params: { postId } } }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setApplicationTitle(dispatch, "Post Details");
-        getPost(dispatch, postId);
+        dispatch(setApplicationTitle("Post Details"));
+        dispatch(getPost(postId));
 
         return () => {
-            clearPost(dispatch);
+            dispatch(clearPost());
         };
     }, [dispatch, postId]);
 

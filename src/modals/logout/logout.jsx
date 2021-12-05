@@ -20,7 +20,7 @@ const Logout = () => {
     const history = useHistory();
 
     const hideLogoutModal = () => {
-        setModalData(dispatch, { type: MODAL_TYPES.NONE, visible: false });
+        dispatch(setModalData({ type: MODAL_TYPES.NONE, visible: false }));
     };
 
     const handleLogout = () => {

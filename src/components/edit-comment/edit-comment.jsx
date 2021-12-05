@@ -47,7 +47,7 @@ const EditComment = forwardRef(({ postId, commentIndex, commentData, onDeleteCom
 
     const handleConfirmDeleteComment = () => {
         if (comment.id) {
-            deleteComment(dispatch, postId, comment.id);
+            dispatch(deleteComment(postId, comment.id));
         } else {
             onDeleteComment();
         }
@@ -66,10 +66,7 @@ const EditComment = forwardRef(({ postId, commentIndex, commentData, onDeleteCom
         };
 
         modalData.description.displayName = "DeleteCommentDescription";
-        setModalData(
-            dispatch,
-            modalData
-        );
+        dispatch(setModalData(modalData));
     };
 
     const validateCommentData = () => formHelper.validateFormData();
@@ -94,9 +91,9 @@ const EditComment = forwardRef(({ postId, commentIndex, commentData, onDeleteCom
             commentFormData.timestamp = {
                 ".sv":"timestamp",
             };
-            addComment(dispatch, postId, commentIndex, commentFormData);
+            dispatch(addComment(postId, commentIndex, commentFormData));
         } else {
-            patchComment(dispatch, postId, comment.id, commentFormData);
+            dispatch(patchComment(postId, comment.id, commentFormData));
         }
     };
 
@@ -108,15 +105,15 @@ const EditComment = forwardRef(({ postId, commentIndex, commentData, onDeleteCom
     useEffect(() => {
         if (commentId === (comment.id || commentIndex)) {
             if (commentAction === COMMENT_ACTION_TYPES.DELETE) {
-                clearComment(dispatch);
+                dispatch(clearComment());
                 onDeleteComment();
             } else if ([COMMENT_ACTION_TYPES.POST, COMMENT_ACTION_TYPES.PATCH]
                 .includes(commentAction)
             ) {
-                clearComment(dispatch);
+                dispatch(clearComment());
                 toast.success("Comment successfully saved.");
             } else if (commentAction === COMMENT_ACTION_TYPES.ERROR) {
-                clearComment(dispatch);
+                dispatch(clearComment());
                 toast.error("Error occurred when saving Comment data.");
             }
         }

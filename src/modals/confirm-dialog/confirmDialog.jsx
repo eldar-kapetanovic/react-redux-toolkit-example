@@ -17,7 +17,7 @@ const ConfirmDialog = () => {
     const dispatch = useDispatch();
 
     const hideConfirmDialog = () => {
-        setModalData(dispatch, { type: MODAL_TYPES.NONE, visible: false });
+        dispatch(setModalData({ type: MODAL_TYPES.NONE, visible: false }));
     };
 
     const handleConfirmAction = () => {

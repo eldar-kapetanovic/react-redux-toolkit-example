@@ -20,15 +20,14 @@ const Post = ({ post }) => {
     const dispatch = useDispatch();
 
     const handleDeletePost = () => {
-        setModalData(
-            dispatch,
+        dispatch(setModalData(
             {
                 type: MODAL_TYPES.DELETE_POST,
                 visible: true,
                 postTitle: post.title,
                 postId: post.id,
             }
-        );
+        ));
     };
 
     return (

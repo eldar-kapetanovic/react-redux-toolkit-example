@@ -53,7 +53,7 @@ const Login = () => {
     };
 
     const hideLoginModal = () => {
-        setModalData(dispatch, { type: MODAL_TYPES.NONE, visible: false });
+        dispatch(setModalData({ type: MODAL_TYPES.NONE, visible: false }));
     };
 
     const handleLogin = () => {
@@ -73,10 +73,7 @@ const Login = () => {
             return;
         }
 
-        addApiCallStatus(
-            dispatch,
-            { callerId: "Login", isComponent: false }
-        );
+        dispatch(addApiCallStatus({ callerId: "Login", isComponent: false }));
         signInWithEmailAndPassword(getAuth(), username, password)
             .then(() => {
                 hideLoginModal();
@@ -85,7 +82,7 @@ const Login = () => {
                 setErrorMessage(signInError.message);
             })
             .finally(() => {
-                removeApiCallStatus(dispatch, "Login");
+                dispatch(removeApiCallStatus("Login"));
             });
     };
 

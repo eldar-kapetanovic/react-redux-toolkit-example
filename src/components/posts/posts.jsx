@@ -12,10 +12,10 @@ const Posts = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setApplicationTitle(dispatch, "Posts List");
-        setShowExport(dispatch, true);
+        dispatch(setApplicationTitle("Posts List"));
+        dispatch(setShowExport(true));
 
-        return () => setShowExport(dispatch, false);
+        return () => dispatch(setShowExport(false));
     }, [dispatch]);
 
     return (

@@ -17,7 +17,7 @@ Read access is granted for all, so anyone can read posts and comments. Only auth
 "Email and password-based authentication" from Firebase SDK. 
 
 The test account for this application is:
-username: `uset@posts.com`
+username: `user@posts.com`
 password: `Test1234`
 
 The intention of this application is to show how the Redux can be used to manage the state in the React application.

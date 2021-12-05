@@ -28,12 +28,12 @@ const TopBar = () => {
 
     const handleAuthenticationModal = () => {
         if (authenticated) {
-            setModalData(dispatch, { type: MODAL_TYPES.LOGOUT, visible: true });
+            dispatch(setModalData({ type: MODAL_TYPES.LOGOUT, visible: true }));
 
             return;
         }
 
-        setModalData(dispatch, { type: MODAL_TYPES.LOGIN, visible: true });
+        dispatch(setModalData({ type: MODAL_TYPES.LOGIN, visible: true }));
     };
     
     return (

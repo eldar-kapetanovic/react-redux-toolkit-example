@@ -38,13 +38,13 @@ const App = () => {
         onAuthStateChanged(
             getAuth(),
             (user) => {
-                setReady(dispatch, true);
+                dispatch(setReady(true));
                 if (user) {
                     user.getIdToken()
-                        .then(token => setAuthenticated(dispatch, (token || "") !== ""))
-                        .catch(() => setAuthenticated(dispatch, false));
+                        .then(token => dispatch(setAuthenticated((token || "") !== "")))
+                        .catch(() => dispatch(setAuthenticated(false)));
                 } else {
-                    setAuthenticated(dispatch, false);
+                    dispatch(setAuthenticated(false));
                 }
             }
         );
@@ -56,7 +56,7 @@ const App = () => {
         );
 
         onValue(postsDataReference, (snapshot) => {
-            setPosts(dispatch, ResponseDataParser.getPostsFromData(snapshot.val()));
+            dispatch(setPosts(ResponseDataParser.getPostsFromData(snapshot.val())));
         });
     }, [dispatch]);
 

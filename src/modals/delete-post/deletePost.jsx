@@ -34,14 +34,14 @@ const DeletePost = () => {
     const history = useHistory();
 
     const hideDeletePostModal = useCallback(() => {
-        setModalData(dispatch, { type: MODAL_TYPES.NONE, visible: false });
+        dispatch(setModalData({ type: MODAL_TYPES.NONE, visible: false }));
     }, [dispatch]);
 
     useEffect(() => {
         if (postAction === POST_ACTION_TYPES.DELETE) {
             const postId = modalData.postId;
 
-            clearPost(dispatch);
+            dispatch(clearPost());
             hideDeletePostModal();
 
             const postsCopy = JSON.parse(JSON.stringify(posts));
@@ -49,7 +49,7 @@ const DeletePost = () => {
 
             if (deletedPostIndex >= 0) {
                 postsCopy.splice(deletedPostIndex, 1);
-                setPosts(dispatch, postsCopy);
+                dispatch(setPosts(postsCopy));
             }
 
             toast.success("Post deleted successfully.");
@@ -61,7 +61,7 @@ const DeletePost = () => {
 
     const handleDeletePost = () => {
         if (authenticated === true && modalData.postId) {
-            deletePost(dispatch, modalData.postId);
+            dispatch(deletePost(modalData.postId));
         }
     };
 

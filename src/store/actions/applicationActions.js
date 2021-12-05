@@ -1,33 +1,49 @@
 import { applicationActions } from "../storeSlices/applicationSlice";
 
-export const setReady = (dispatch, isReady) => {
-    dispatch(applicationActions.setReady(isReady));
+export const setReady = (isReady) => {
+    return (dispatch) => {
+        dispatch(applicationActions.setReady(isReady));
+    };
 };
 
-export const setAuthenticated = (dispatch, isAuthenticated) => {
-    dispatch(applicationActions.setAuthenticated(isAuthenticated));
+export const setAuthenticated = (isAuthenticated) => {
+    return (dispatch) => {
+        dispatch(applicationActions.setAuthenticated(isAuthenticated));
+    };
 };
 
-export const setApplicationTitle = (dispatch, applicationTitle) => {
-    dispatch(applicationActions.setApplicationTitle(applicationTitle));
+export const setApplicationTitle = (applicationTitle) => {
+    return (dispatch) => {
+        dispatch(applicationActions.setApplicationTitle(applicationTitle));
+    };
 };
 
-export const setShowExport = (dispatch, isShowExport) => {
-    dispatch(applicationActions.setShowExport(isShowExport));
+export const setShowExport = (isShowExport) => {
+    return (dispatch) => {
+        dispatch(applicationActions.setShowExport(isShowExport));
+    };
 };
 
-export const setPosts = (dispatch, posts) => {
-    dispatch(applicationActions.setPosts(posts));
+export const setPosts = (posts) => {
+    return (dispatch) => {
+        dispatch(applicationActions.setPosts(posts));
+    };
 };
 
-export const setModalData = (dispatch, modalData) => {
-    dispatch(applicationActions.setModalData(modalData));
+export const setModalData = (modalData) => {
+    return (dispatch) => {
+        dispatch(applicationActions.setModalData(modalData));
+    };
 };
 
-export const addApiCallStatus = (dispatch, apiCallStatus) => {
-    dispatch(applicationActions.addApiCallStatus(apiCallStatus));
+export const addApiCallStatus = (apiCallStatus) => {
+    return (dispatch) => {
+        dispatch(applicationActions.addApiCallStatus(apiCallStatus));
+    };
 };
 
-export const removeApiCallStatus = (dispatch, apiCallId) => {
-    dispatch(applicationActions.removeApiCallStatus(apiCallId));
+export const removeApiCallStatus = (apiCallId) => {
+    return (dispatch) => {
+        dispatch(applicationActions.removeApiCallStatus(apiCallId));
+    };
 };
